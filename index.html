@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sai Kiran Saripilli</title>
+<meta name="description" content="Portfolio of Sai Kiran Saripilli, an AI engineer in Hyderabad building agentic AI, retrieval and voice systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a warm, light page with a hero of layered colour shapes around the portrait, three signal colours (listen, think, speak) reused everywhere, and project stories that open like cards. */
+:root{
+  --bg:#fff6e6;
+  --paper:#ffffff;
+  --ink:#1c2233;
+  --muted:#586074;
+  --line:#e9dcc3;
+  --coral:#ff5b3d;
+  --sun:#ffc533;
+  --mint:#27b79c;
+  --violet:#7a5cff;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-0.02em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:8px;z-index:50}
+.skip:focus{left:8px}
+
+/* nav */
+header.bar{position:sticky;top:0;z-index:20;background:rgba(255,246,230,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font:800 1.2rem var(--display);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{display:inline-flex;gap:3px;align-items:center;height:20px}
+.brand i b{width:4px;border-radius:3px;display:block}
+.brand i b:nth-child(1){height:10px;background:var(--mint)}
+.brand i b:nth-child(2){height:20px;background:var(--sun)}
+.brand i b:nth-child(3){height:14px;background:var(--violet)}
+nav ul{display:flex;gap:4px;align-items:center}
+nav a{display:block;padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{background:var(--sun)}
+nav a.cta{background:var(--ink);color:#fff;margin-left:6px}
+nav a.cta:hover{background:var(--coral)}
+@media (max-width:700px){nav li:not(:last-child){display:none}}
+
+/* buttons, chips */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font:600 .98rem var(--body);cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s,background .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink);background:var(--sun)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--coral);color:#fff}
+.btn.primary:hover{background:#ff7157}
+.btn .i{font-size:1.15em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .78rem var(--mono);padding:5px 11px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper)}
+.eyebrow{font:500 .78rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* hero */
+.hero{padding:clamp(36px,6vw,72px) 0 clamp(36px,6vw,64px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.6rem,6vw,4.9rem);line-height:1;font-weight:800;margin:16px 0 22px}
+.hl{background:linear-gradient(transparent 62%,var(--sun) 62%,var(--sun) 92%,transparent 92%);padding:0 .08em}
+.hero .sub{font-size:1.18rem;max-width:50ch;color:var(--muted)}
+.hero .sub strong{color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 26px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font:500 .82rem var(--mono);color:var(--muted)}
+.facts li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:8px}
+.stage{position:relative;width:min(440px,100%);aspect-ratio:1;margin:0 auto}
+.stage .layer{position:absolute;will-change:transform;transition:transform .25s ease-out}
+.stage .sunc{width:58%;aspect-ratio:1;border-radius:50%;background:var(--sun);border:2px solid var(--ink);right:-2%;top:2%}
+.stage .blob{width:46%;aspect-ratio:1;border-radius:42% 58% 55% 45%/50% 45% 55% 50%;background:var(--violet);border:2px solid var(--ink);left:-4%;bottom:6%}
+.stage .pill{width:34%;height:15%;border-radius:999px;background:var(--mint);border:2px solid var(--ink);left:6%;top:12%;transform:rotate(-14deg)}
+.stage .wavebar{display:flex;align-items:flex-end;gap:5px;right:2%;bottom:2%;height:22%;padding:12px 16px;background:var(--paper);border:2px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink)}
+.stage .wavebar b{display:block;width:6px;border-radius:4px;background:var(--coral);animation:bar 1.3s ease-in-out infinite}
+.stage .wavebar b:nth-child(2n){background:var(--ink)}
+.stage .wavebar b:nth-child(1){height:30%;animation-delay:-.1s}
+.stage .wavebar b:nth-child(2){height:70%;animation-delay:-.4s}
+.stage .wavebar b:nth-child(3){height:100%;animation-delay:-.7s}
+.stage .wavebar b:nth-child(4){height:55%;animation-delay:-.2s}
+.stage .wavebar b:nth-child(5){height:85%;animation-delay:-.9s}
+.stage .wavebar b:nth-child(6){height:40%;animation-delay:-.5s}
+@keyframes bar{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+.stage .portrait{left:12%;top:6%;width:76%;height:88%;border:2px solid var(--ink);border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--paper);box-shadow:6px 6px 0 var(--ink)}
+.stage .portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.sticker{position:absolute;font:700 .8rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border:2px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);animation:bob 4s ease-in-out infinite}
+.sticker.l{background:var(--mint);left:-3%;top:44%}
+.sticker.t{background:var(--sun);right:-4%;top:40%;animation-delay:-1.3s}
+.sticker.s{background:#c9bcff;left:10%;bottom:-3%;animation-delay:-2.6s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.stage{width:min(380px,100%)}}
+
+/* marquee */
+.marquee{border-block:2px solid var(--ink);background:var(--ink);color:#fff;overflow:hidden;padding:14px 0}
+.marquee .track{display:flex;gap:14px;width:max-content;animation:slide 38s linear infinite}
+.marquee span{font:500 .95rem var(--mono);padding:6px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);white-space:nowrap}
+.marquee span:nth-child(4n+1){background:var(--mint);border-color:var(--mint);color:var(--ink)}
+.marquee span:nth-child(4n+3){background:var(--sun);border-color:var(--sun);color:var(--ink)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:clamp(52px,8vw,104px) 0}
+.sec-head{margin-bottom:40px;max-width:62ch}
+.sec-head h2{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:800;margin-top:12px;line-height:1.05}
+.sec-head p{color:var(--muted);margin-top:16px;font-size:1.08rem}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:start}
+.about p{font-size:1.12rem;margin-bottom:16px;max-width:60ch}
+.about p.big{font:700 clamp(1.5rem,2.8vw,2.1rem)/1.2 var(--display);letter-spacing:-.02em;margin-bottom:20px}
+.glance{border:2px solid var(--ink);border-radius:22px;background:var(--paper);box-shadow:6px 6px 0 var(--ink);padding:24px}
+.glance h3{font-size:1.1rem;margin-bottom:14px}
+.glance li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1.5px dashed var(--line);font-size:.98rem}
+.glance li:first-of-type{border-top:0}
+.glance li span:first-child{color:var(--muted)}
+.glance li span:last-child{font-weight:600;text-align:right}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+
+/* case studies */
+.case{--c:var(--coral);position:relative;border:2px solid var(--ink);border-radius:26px;background:var(--paper);box-shadow:8px 8px 0 var(--c);margin-bottom:56px;overflow:hidden}
+.case.k1{--c:var(--mint)}.case.k2{--c:var(--sun)}.case.k3{--c:var(--violet)}.case.k4{--c:var(--coral)}
+.case-top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:0}
+.case-copy{padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:16px}
+.tag{align-self:flex-start;font:700 .76rem var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border:2px solid var(--ink);border-radius:999px;background:var(--c)}
+.case.k3 .tag{color:#fff}
+.case h3{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:800;line-height:1.05}
+.case .lead{color:var(--muted);font-size:1.08rem}
+.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.metric{border:2px solid var(--ink);border-radius:16px;padding:10px 16px;background:var(--bg)}
+.metric b{display:block;font:800 1.7rem/1.1 var(--display);font-variant-numeric:tabular-nums}
+.metric span{font-size:.82rem;color:var(--muted)}
+.case-shot{background:var(--c);border-left:2px solid var(--ink);padding:clamp(16px,3vw,32px);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.case-shot img{display:block;width:100%;height:auto;border:2px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);background:var(--paper)}
+.case-shot figcaption{font-size:.85rem;color:var(--ink);font-weight:500}
+@media (max-width:900px){.case-top{grid-template-columns:1fr}.case-shot{border-left:0;border-top:2px solid var(--ink)}}
+details.story{border-top:2px solid var(--ink)}
+details.story>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px clamp(22px,4vw,40px);font:700 1.05rem var(--display);background:var(--bg)}
+details.story>summary::-webkit-details-marker{display:none}
+details.story>summary:hover{background:var(--sun)}
+details.story>summary .i{font-size:1.3em;transition:transform .2s}
+details.story[open]>summary .i{transform:rotate(180deg)}
+details.story>summary .closed{display:inline}details.story>summary .opened{display:none}
+details.story[open]>summary .closed{display:none}details.story[open]>summary .opened{display:inline}
+.story-body{padding:clamp(22px,4vw,40px);display:grid;gap:30px}
+.beats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 40px}
+@media (max-width:820px){.beats{grid-template-columns:1fr}}
+.beat h4{font:700 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:4px 10px;border-radius:8px;background:var(--c);border:1.5px solid var(--ink);margin-bottom:12px}
+.case.k3 .beat h4{color:#fff}
+.beat p{max-width:58ch}
+.list li{position:relative;padding-left:22px;margin-bottom:9px}
+.list li::before{content:"";position:absolute;left:0;top:.62em;width:11px;height:11px;border-radius:50%;background:var(--c);border:1.5px solid var(--ink)}
+.beat.wide{grid-column:1/-1}
+.took{border:2px dashed var(--ink);border-radius:18px;padding:18px 22px;background:var(--bg);font:600 1.15rem/1.4 var(--display);letter-spacing:-.01em}
+.took small{display:block;font:700 .74rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+
+/* dark diagram panel */
+.fig{--d-bg:#12171f;--d-node:#1b2330;--d-line:#2d394b;--d-text:#eef2f7;--d-muted:#a3afc0;--d-accent:#52d6c8;--d-warn:#f4b04c;margin:0;border:2px solid var(--ink);border-radius:18px;background:var(--d-bg);padding:18px;overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:760px;height:auto}
+.fig figcaption{margin-top:12px;color:var(--d-muted);font-size:.9rem;max-width:80ch}
+.n{fill:var(--d-node);stroke:var(--d-line);stroke-width:1.2}
+.n.hl{stroke:var(--d-accent)}
+.n.warn{stroke:var(--d-warn)}
+.n.dash{stroke-dasharray:5 4}
+.t{fill:var(--d-text);font:600 13px var(--body);text-anchor:middle}
+.s{fill:var(--d-muted);font:400 10.5px var(--mono);text-anchor:middle}
+.s.l{text-anchor:start}.s.r{text-anchor:end}
+.a{fill:none;stroke:var(--d-muted);stroke-width:1.4}
+.a.d{stroke-dasharray:4 4}
+.a.k{stroke:var(--d-warn)}
+
+.subhead{font:700 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:980px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.tools{grid-template-columns:1fr}}
+.tool{border:2px solid var(--ink);border-radius:16px;padding:14px;background:var(--bg)}
+.tool b{display:block;font:700 1rem var(--display);margin-bottom:4px}
+.tool span{color:var(--muted);font-size:.88rem;line-height:1.45;display:block}
+.safety{border:2px solid var(--ink);border-radius:20px;background:#e5f8f3;padding:22px 24px}
+.safety h4{display:flex;align-items:center;gap:10px;font:800 1.25rem var(--display);margin:0 0 4px}
+.safety h4 .i{font-size:1.35em}
+.safety>p{color:var(--muted);margin-bottom:14px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.steps{grid-template-columns:1fr}}
+.step{border:2px solid var(--ink);border-radius:24px;padding:26px;background:var(--paper);box-shadow:6px 6px 0 var(--ink);position:relative}
+.step .num{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);font:800 1.3rem var(--display);margin-bottom:16px}
+.step:nth-child(1) .num{background:var(--mint)}.step:nth-child(2) .num{background:var(--sun)}.step:nth-child(3) .num{background:#c9bcff}
+.step h3{font-size:1.6rem;font-weight:800;margin-bottom:10px}
+.step p{color:var(--muted);margin-bottom:14px}
+.step li{padding-left:20px;position:relative;margin-bottom:7px;font-size:.98rem}
+.step li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:2px;background:var(--ink)}
+
+/* values */
+.vals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1000px){.vals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.vals{grid-template-columns:1fr}}
+.val{border:2px solid var(--ink);border-radius:22px;padding:22px;background:var(--paper)}
+.val:nth-child(1){background:#e5f8f3}.val:nth-child(2){background:#fff1c2}.val:nth-child(3){background:#ece7ff}.val:nth-child(4){background:#ffe2da}
+.val .i{font-size:1.8rem;margin-bottom:14px}
+.val h3{font-size:1.2rem;font-weight:800;margin-bottom:8px}
+.val p{font-size:.96rem;color:#3f475a}
+
+/* stack */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.grid{grid-template-columns:1fr}}
+.card{border:2px solid var(--ink);border-radius:20px;background:var(--paper);padding:20px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.card .ico{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;border:2px solid var(--ink);margin-bottom:14px;font-size:1.4rem}
+.card:nth-child(4n+1) .ico{background:var(--mint)}.card:nth-child(4n+2) .ico{background:var(--sun)}.card:nth-child(4n+3) .ico{background:#c9bcff}.card:nth-child(4n+4) .ico{background:#ffb4a3}
+.card h3{font:800 1.12rem var(--display);margin-bottom:8px}
+.card p{color:var(--muted);font-size:.93rem;line-height:1.55}
+.skills{margin-top:44px;display:grid;gap:16px}
+.skillrow{display:grid;grid-template-columns:210px minmax(0,1fr);gap:8px 20px;align-items:start;padding-top:16px;border-top:2px dashed var(--line)}
+.skillrow h4{font:700 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 0}
+@media (max-width:700px){.skillrow{grid-template-columns:1fr}}
+
+/* experience */
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 32px;padding:28px 0;border-top:2px solid var(--ink)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job .when{font:500 .85rem var(--mono);color:var(--muted);padding-top:8px}
+.job h3{font:800 1.45rem var(--display)}
+.job .org{font-weight:600;margin:2px 0 14px;color:#c63a20}
+.job .list li::before{--c:var(--sun)}
+@media (max-width:700px){.job{grid-template-columns:1fr}}
+
+/* contact */
+.contact{border:2px solid var(--ink);border-radius:30px;background:var(--coral);color:#fff;padding:clamp(26px,5vw,60px);box-shadow:8px 8px 0 var(--ink)}
+.contact h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1;max-width:16ch}
+.contact p{margin:18px 0 30px;max-width:52ch;font-size:1.12rem}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:660px}
+@media (max-width:560px){.links{grid-template-columns:1fr}}
+.links .btn{justify-content:flex-start;overflow-wrap:anywhere}
+.contact .btn.primary{background:var(--ink);color:#fff}
+.contact .btn.primary:hover{background:var(--sun);color:var(--ink)}
+.phone{margin-top:22px;font:500 .9rem var(--mono)}
+footer{padding:30px 0 52px;font:500 .85rem var(--mono);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee .track{animation:none;flex-wrap:wrap;width:auto;padding:0 16px;justify-content:center}
+  .marquee .dup{display:none}
+  .stage .wavebar b,.sticker{animation:none}
+  .stage .layer{transition:none}
+  .btn,.card{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  </defs>
+</svg>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"><b></b><b></b><b></b></i>Sai Kiran</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#projects">Case studies</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#stack">AI stack</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+        <li><a class="cta" href="#contact">Say hello</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Sai Kiran Saripilli · AI Engineer · Hyderabad</p>
+      <h1>AI systems that <span class="hl">listen</span>, reason, and ask before they act.</h1>
+      <p class="sub">I build agentic AI, retrieval and voice systems that run in production. <strong>2+ years</strong> of shipping LangGraph agents, RAG pipelines and deep learning models, with the safety checks written into the code.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects"><svg class="i"><use href="#i-flow"/></svg>See case studies</a>
+        <button class="btn" type="button" data-copy="saikiran212001@gmail.com"><svg class="i"><use href="#i-mail"/></svg><span>Copy email</span></button>
+        <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener"><svg class="i"><use href="#i-file"/></svg>Resume</a>
+      </div>
+      <ul class="facts">
+        <li>LangGraph · PyTorch · RAG</li>
+        <li>Open to AI engineer roles, hybrid or remote</li>
+      </ul>
+    </div>
+    <div class="stage" id="stage">
+      <div class="layer sunc" data-depth="14"></div>
+      <div class="layer blob" data-depth="-18"></div>
+      <div class="layer pill" data-depth="22"></div>
+      <div class="layer portrait" data-depth="6"><img src="assets/profile.webp" alt="Portrait of Sai Kiran Saripilli" width="760" height="760"></div>
+      <div class="layer wavebar" data-depth="-10" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+      <span class="sticker l">Listening</span>
+      <span class="sticker t">Thinking</span>
+      <span class="sticker s">Speaking</span>
+    </div>
+  </div>
+</div>
+
+<div class="marquee" aria-label="Technologies I work with">
+  <div class="track">
+    <span>LangGraph</span><span>RAG</span><span>PyTorch</span><span>Claude API</span><span>FastAPI</span><span>Tool calling</span><span>CNN and RNN</span><span>React</span><span>Voice AI</span><span>OAuth 2.0</span><span>Ragas</span><span>AWS</span>
+    <span class="dup" aria-hidden="true">LangGraph</span><span class="dup" aria-hidden="true">RAG</span><span class="dup" aria-hidden="true">PyTorch</span><span class="dup" aria-hidden="true">Claude API</span><span class="dup" aria-hidden="true">FastAPI</span><span class="dup" aria-hidden="true">Tool calling</span><span class="dup" aria-hidden="true">CNN and RNN</span><span class="dup" aria-hidden="true">React</span><span class="dup" aria-hidden="true">Voice AI</span><span class="dup" aria-hidden="true">OAuth 2.0</span><span class="dup" aria-hidden="true">Ragas</span><span class="dup" aria-hidden="true">AWS</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <p class="eyebrow">About</p>
+      <p class="big" style="margin-top:12px">I turn messy, real-world requests into AI systems people can trust.</p>
+      <p>I'm an AI engineer in Hyderabad. At Infyz Solutions I build agents and data tools for port and cargo operations, from plain-English database queries to document processing that runs every day.</p>
+      <p>Outside work I build Ayra, a voice assistant that you can interrupt and that checks with you before it sends an email or places an order. On the machine learning side I work with PyTorch, CNNs and RNNs, and I fine-tuned a Gemma model.</p>
+    </div>
+    <div class="glance">
+      <h3>At a glance</h3>
+      <ul>
+        <li><span>Role</span><span>AI Engineer</span></li>
+        <li><span>Experience</span><span>2+ years</span></li>
+        <li><span>Based in</span><span>Hyderabad, India</span></li>
+        <li><span>Education</span><span>B.Tech CS, CGPA 8.4/10</span></li>
+        <li><span>Looking for</span><span>AI engineer roles</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Case studies</p>
+      <h2>Four systems, each built to be trusted.</h2>
+      <p>Agents that take real actions need guardrails more than clever prompts. Open a story to see the problem, the limits I worked within, what I built, and what I took from it.</p>
+    </div>
+
+    <!-- AYRA -->
+    <article class="case k1" id="ayra">
+      <div class="case-top">
+        <div class="case-copy">
+          <span class="tag">Voice agent · personal project</span>
+          <h3>Ayra, a voice assistant you can interrupt</h3>
+          <p class="lead">It talks like a person and works like a careful assistant. Interrupt it mid-sentence, ask it to check Maps or read your email, and it only sends or buys something after you say yes.</p>
+          <div class="metrics">
+            <div class="metric"><b>22</b><span>tools, plus web search</span></div>
+            <div class="metric"><b>1</b><span>spoken yes per email or order</span></div>
+            <div class="metric"><b>₹1,000</b><span>order limit, cash on delivery</span></div>
+          </div>
+        </div>
+        <figure class="case-shot" style="margin:0">
+          <img src="assets/ayra.webp" alt="Screenshot of the Ayra voice assistant interface with a glowing ring" width="1600" height="912" loading="lazy">
+          <figcaption>Ayra running locally. The ring changes state as it listens, thinks and speaks.</figcaption>
+        </figure>
+      </div>
+      <details class="story" open>
+        <summary><span><span class="closed">Read the full story</span><span class="opened">Hide the story</span></span><svg class="i"><use href="#i-chev"/></svg></summary>
+        <div class="story-body">
+          <div class="beats">
+            <div class="beat"><h4>Problem</h4><p>Voice assistants tend to be either slow or reckless. I wanted one I could cut off mid-sentence that still would never send an email or place an order by mistake.</p></div>
+            <div class="beat"><h4>Constraints</h4>
+              <ul class="list">
+                <li>Speech has to start fast, and stop the instant I cut in.</li>
+                <li>It must never answer its own voice coming back through the microphone.</li>
+                <li>Emails, web pages and news are untrusted text that could carry instructions.</li>
+              </ul>
+            </div>
+            <div class="beat wide"><h4>What I did</h4>
+              <ul class="list">
+                <li>Deepgram Flux streams the microphone and decides when I have finished speaking. Words it would mishear are boosted: contacts, “Ayra”, “Swiggy”, “Instamart”. Low-confidence sounds are ignored.</li>
+                <li>Claude Haiku runs inside a LangGraph agent with conversation memory, so follow-ups work. Ayra starts speaking after Claude's first clause and says “Let me check” while a tool runs.</li>
+                <li>Sarvam AI's Bulbul v4 gives a natural Indian English voice. Padding and kept-awake Bluetooth headphones stop words being clipped.</li>
+                <li>“Stop”, “wait” or “Ayra” cuts it off mid-sentence, and so does clicking the page or pressing Enter. Echo protection stops it hearing itself.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="fig">
+        <svg viewBox="0 0 940 300" role="img" aria-label="Ayra's voice loop: microphone to Deepgram Flux to a LangGraph agent to Sarvam AI to the speaker, with read tools that run immediately, write tools that wait for a spoken yes, and an interrupt path that stops writing and speech.">
+          <defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#94a1b3"/></marker>
+          <marker id="ah1k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#f4b04c"/></marker></defs>
+          <rect class="n" x="20" y="100" width="110" height="56" rx="10"/><text class="t" x="75" y="133">Microphone</text>
+          <rect class="n" x="170" y="100" width="140" height="56" rx="10"/><text class="t" x="240" y="124">Deepgram Flux</text><text class="s" x="240" y="141">live transcription</text>
+          <rect class="n hl" x="350" y="100" width="200" height="56" rx="10"/><text class="t" x="450" y="124">LangGraph agent</text><text class="s" x="450" y="141">Claude Haiku · memory</text>
+          <rect class="n" x="590" y="100" width="140" height="56" rx="10"/><text class="t" x="660" y="124">Sarvam AI</text><text class="s" x="660" y="141">Bulbul v4 voice</text>
+          <rect class="n" x="770" y="100" width="110" height="56" rx="10"/><text class="t" x="825" y="133">Speaker</text>
+          <path class="a" d="M130 128H168" marker-end="url(#ah1)"/><text class="s" x="150" y="118" style="font-size:9px">audio</text>
+          <path class="a" d="M310 128H348" marker-end="url(#ah1)"/><text class="s" x="330" y="118" style="font-size:9px">text</text>
+          <path class="a" d="M550 128H588" marker-end="url(#ah1)"/><text class="s" x="569" y="118" style="font-size:9px">reply</text>
+          <path class="a" d="M730 128H768" marker-end="url(#ah1)"/><text class="s" x="749" y="118" style="font-size:9px">speech</text>
+
+          <rect class="n warn dash" x="470" y="10" width="250" height="40" rx="10"/><text class="t" x="595" y="27">Interrupt</text><text class="s" x="595" y="42">voice, click or Enter</text>
+          <path class="a d k" d="M560 50 490 98" marker-end="url(#ah1k)"/><text class="s r" x="468" y="82">stops writing</text>
+          <path class="a d k" d="M630 50 670 98" marker-end="url(#ah1k)"/><text class="s l" x="682" y="82">stops speech</text>
+
+          <rect class="n" x="300" y="226" width="190" height="56" rx="10"/><text class="t" x="395" y="250">Read tools</text><text class="s" x="395" y="267">time, weather, maps, search</text>
+          <rect class="n warn" x="530" y="226" width="230" height="56" rx="10"/><text class="t" x="645" y="250">Write tools</text><text class="s" x="645" y="267">send email, place order</text>
+          <path class="a" d="M410 156V224" marker-end="url(#ah1)"/><text class="s l" x="420" y="196">runs now</text>
+          <path class="a k" d="M520 156 600 224" marker-end="url(#ah1k)"/><text class="s l" x="590" y="196" style="fill:#f4b04c">waits for a spoken yes</text>
+        </svg>
+        <figcaption>One turn of Ayra. Read tools run straight away. Write tools stop until you confirm the exact read-back, and an interruption cancels both the writing and the speech.</figcaption>
+      </figure>
+          <div>
+            <h4 class="subhead">What you can ask</h4>
+            <div class="tools">
+              <div class="tool"><b>Time</b><span>Date and time in any timezone.</span></div>
+              <div class="tool"><b>Weather</b><span>Today, or up to 16 days ahead, for any place.</span></div>
+              <div class="tool"><b>Reminders</b><span>Set, list and cancel. Cancelling several asks first.</span></div>
+              <div class="tool"><b>Maps</b><span>Addresses, directions by car, on foot or transit, and nearby places.</span></div>
+              <div class="tool"><b>Gmail</b><span>Search, read, draft to a contact, and send only after your spoken yes.</span></div>
+              <div class="tool"><b>Contacts</b><span>Match misheard names: “Saikran” finds “Sai Kiran”.</span></div>
+              <div class="tool"><b>Quick answers</b><span>166 currencies, unit conversion, tech and AI headlines, web search.</span></div>
+              <div class="tool"><b>Swiggy</b><span>Order history, live tracking, search, cart and a full order read-back.</span></div>
+            </div>
+          </div>
+          <div class="safety">
+            <h4><svg class="i"><use href="#i-shield"/></svg>Safety, enforced in code</h4>
+            <p>These rules sit in the program, so the model cannot talk its way around them.</p>
+            <ul class="list">
+              <li>Emails and Swiggy orders need your yes in the very next reply, to the exact read-back.</li>
+              <li>Emails, web pages and news cannot trigger emails, reminders or orders in the same turn, and email bodies are marked as untrusted.</li>
+              <li>Email goes only to people in your contacts, and a subject line cannot add hidden recipients.</li>
+              <li>Swiggy orders are cash on delivery only, within the ₹1,000 limit and the ₹99 Instamart minimum, with a final cart check and no automatic retries.</li>
+              <li>Only sign-in tokens are saved, readable by you alone. Every tool is marked read or write and returns a short structured result with clear errors such as auth_expired or not_found.</li>
+            </ul>
+          </div>
+          <div class="beats">
+            <div class="beat"><h4>Outcome</h4><p>A working assistant with 22 tools plus web search, where every email or order takes exactly one spoken yes, and an interruption cancels both the writing and the speech.</p></div>
+            <div class="beat"><h4>Built with</h4><div class="chips"><span class="chip">Deepgram Flux</span><span class="chip">Claude Haiku</span><span class="chip">LangGraph</span><span class="chip">Sarvam AI</span><span class="chip">Gmail API</span><span class="chip">Google Maps</span><span class="chip">OAuth 2.0</span></div></div>
+          </div>
+          <p class="took"><small>What I took from it</small>Rules that matter belong in code, not in the prompt. A model can be talked around, a check in the program cannot.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- ARTISTONGO -->
+    <article class="case k2" id="artistongo">
+      <div class="case-top">
+        <div class="case-copy">
+          <span class="tag">Production system · conversational booking</span>
+          <h3>ArtistOnGo, booking by conversation</h3>
+          <p class="lead">A conversational booking platform for salon space rentals, live in production. Four kinds of users talk to the same assistant, each with their own permissions.</p>
+          <div class="metrics">
+            <div class="metric"><b>4</b><span>user personas</span></div>
+            <div class="metric"><b>300+</b><span>automated tests</span></div>
+            <div class="metric"><b>31K+</b><span>records searched</span></div>
+          </div>
+        </div>
+        <figure class="case-shot" style="margin:0">
+          <img src="assets/aog.webp" alt="Screenshot of the ArtistOnGo home page" width="1600" height="918" loading="lazy">
+          <figcaption>ArtistOnGo, the live booking platform the assistant works inside.</figcaption>
+        </figure>
+      </div>
+      <details class="story">
+        <summary><span><span class="closed">Read the full story</span><span class="opened">Hide the story</span></span><svg class="i"><use href="#i-chev"/></svg></summary>
+        <div class="story-body">
+          <div class="beats">
+            <div class="beat"><h4>Problem</h4><p>One assistant had to serve four kinds of users on a salon space rental marketplace, and each kind is allowed to do different things.</p></div>
+            <div class="beat"><h4>Constraints</h4>
+              <ul class="list">
+                <li>Verification gates and licence checks can never be skipped.</li>
+                <li>Permissions differ per persona, and session state must hold across turns.</li>
+                <li>It is live, so latency-sensitive paths have to stay fast and tested.</li>
+              </ul>
+            </div>
+            <div class="beat wide"><h4>What I did</h4>
+              <ul class="list">
+                <li>Built a two-stage pipeline. The first stage works out who is asking and what they want. The second answers and calls tools.</li>
+                <li>Added a deterministic state machine that controls flow position from session state, so the model never picks the next step.</li>
+                <li>Combined vector search, geographic radius queries and structured filters over 31K+ records.</li>
+                <li>Closed an account-takeover path in the one-time-password flow, and removed bearer tokens stored at rest in the session store, which had allowed a cross-account data leak.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="fig">
+        <svg viewBox="0 0 940 280" role="img" aria-label="ArtistOnGo request path: a message goes to a stage one router, then a state machine that owns the flow position, then a stage two agent that calls hybrid retrieval, then a reply.">
+          <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#94a1b3"/></marker></defs>
+          <rect class="n" x="20" y="100" width="110" height="56" rx="10"/><text class="t" x="75" y="133">Message</text>
+          <rect class="n" x="170" y="100" width="150" height="56" rx="10"/><text class="t" x="245" y="124">Stage 1 router</text><text class="s" x="245" y="141">persona and intent</text>
+          <rect class="n hl" x="360" y="100" width="170" height="56" rx="10"/><text class="t" x="445" y="124">State machine</text><text class="s" x="445" y="141">verification, licence gates</text>
+          <rect class="n" x="570" y="100" width="140" height="56" rx="10"/><text class="t" x="640" y="124">Stage 2 agent</text><text class="s" x="640" y="141">tools and answers</text>
+          <rect class="n" x="750" y="100" width="130" height="56" rx="10"/><text class="t" x="815" y="133">Reply</text>
+          <path class="a" d="M130 128H168" marker-end="url(#ah2)"/>
+          <path class="a" d="M320 128H358" marker-end="url(#ah2)"/>
+          <path class="a" d="M530 128H568" marker-end="url(#ah2)"/>
+          <path class="a" d="M710 128H748" marker-end="url(#ah2)"/>
+          <text class="s" x="445" y="84">flow is never LLM-inferred</text>
+          <rect class="n" x="360" y="206" width="170" height="56" rx="10"/><text class="t" x="445" y="230">Session state</text><text class="s" x="445" y="247">per-persona permissions</text>
+          <path class="a" d="M445 204V158" marker-end="url(#ah2)"/><text class="s l" x="455" y="186">owns the flow position</text>
+          <rect class="n" x="540" y="206" width="200" height="56" rx="10"/><text class="t" x="640" y="230">Hybrid retrieval</text><text class="s" x="640" y="247">31K+ records</text>
+          <path class="a" d="M640 158V204" marker-end="url(#ah2)"/>
+        </svg>
+        <figcaption>The state machine sits between the router and the agent. It holds the flow position in session state, so the model never decides which step comes next.</figcaption>
+      </figure>
+          <div class="beats">
+            <div class="beat"><h4>Outcome</h4><p>Four personas served by one assistant, a 300+ test suite covering orchestration and latency-sensitive paths, and two security holes closed.</p></div>
+            <div class="beat"><h4>Built with</h4><div class="chips"><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">Django REST</span><span class="chip">Next.js</span><span class="chip">ChromaDB</span><span class="chip">FAISS</span></div></div>
+          </div>
+          <p class="took"><small>What I took from it</small>Let the model do the talking and let code decide the flow. Business rules hold up when the model is never asked to remember them.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- ZORA -->
+    <article class="case k3" id="zora">
+      <div class="case-top">
+        <div class="case-copy">
+          <span class="tag">Multi-agent system · research</span>
+          <h3>ZORA, parallel research agents</h3>
+          <p class="lead">A research system that splits a question across parallel agents and merges what they find into one grounded report.</p>
+          <div class="metrics">
+            <div class="metric"><b>60%</b><span>lower latency than sequential</span></div>
+            <div class="metric"><b>9.2/10</b><span>faithfulness, scored with Ragas</span></div>
+          </div>
+        </div>
+        <figure class="case-shot" style="margin:0">
+          <img src="assets/zora.webp" alt="Illustration of the ZORA research interface with four parallel researchers and a streaming report" width="1600" height="900" loading="lazy">
+          <figcaption>Illustration of the ZORA interface with sample data, not a live screenshot.</figcaption>
+        </figure>
+      </div>
+      <details class="story">
+        <summary><span><span class="closed">Read the full story</span><span class="opened">Hide the story</span></span><svg class="i"><use href="#i-chev"/></svg></summary>
+        <div class="story-body">
+          <div class="beats">
+            <div class="beat"><h4>Problem</h4><p>A research question breaks into several parts. Working through them one after another is slow, and how many parts there are changes with every question.</p></div>
+            <div class="beat"><h4>Constraints</h4>
+              <ul class="list">
+                <li>The number of agents is only known at runtime.</li>
+                <li>Every agent's result has to merge into one consistent state.</li>
+                <li>Answers should stream, and quality has to be measurable.</li>
+              </ul>
+            </div>
+            <div class="beat wide"><h4>What I did</h4>
+              <ul class="list">
+                <li>Used LangGraph's Send API to start a dynamic number of researcher agents at runtime.</li>
+                <li>Merged each result into shared state with reducers, in a map-reduce pattern, and streamed answers over server-sent events.</li>
+                <li>Let the system write a missing tool at runtime, validate it with an AST check and run it in a sandbox.</li>
+                <li>Scored every run with a Ragas evaluation pipeline.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="fig">
+        <svg viewBox="0 0 940 320" role="img" aria-label="ZORA flow: a question goes to a planner, which fans out to as many researcher agents as needed, whose results merge through reducers into a writer, and stream to the client over SSE. A tool synthesis sandbox feeds the researchers and Ragas scores the merged result.">
+          <defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#94a1b3"/></marker></defs>
+          <rect class="n" x="20" y="132" width="110" height="52" rx="10"/><text class="t" x="75" y="163">Question</text>
+          <rect class="n" x="170" y="132" width="130" height="52" rx="10"/><text class="t" x="235" y="154">Planner</text><text class="s" x="235" y="170">splits the task</text>
+          <rect class="n hl" x="360" y="30" width="150" height="44" rx="10"/><text class="t" x="435" y="57">Researcher 1</text>
+          <rect class="n hl" x="360" y="100" width="150" height="44" rx="10"/><text class="t" x="435" y="127">Researcher 2</text>
+          <rect class="n hl" x="360" y="170" width="150" height="44" rx="10"/><text class="t" x="435" y="197">Researcher 3</text>
+          <rect class="n hl dash" x="360" y="240" width="150" height="44" rx="10"/><text class="t" x="435" y="267">Researcher N</text>
+          <rect class="n" x="590" y="132" width="130" height="52" rx="10"/><text class="t" x="655" y="154">Merge</text><text class="s" x="655" y="170">reducers</text>
+          <rect class="n" x="760" y="132" width="130" height="52" rx="10"/><text class="t" x="825" y="154">Writer</text><text class="s" x="825" y="170">grounded report</text>
+          <path class="a" d="M130 158H168" marker-end="url(#ah3)"/>
+          <path class="a" d="M300 158 358 52" marker-end="url(#ah3)"/><path class="a" d="M300 158 358 122" marker-end="url(#ah3)"/><path class="a" d="M300 158 358 192" marker-end="url(#ah3)"/><path class="a" d="M300 158 358 262" marker-end="url(#ah3)"/>
+          <text class="s" x="330" y="16">fan-out</text>
+          <path class="a" d="M510 52 588 158" marker-end="url(#ah3)"/><path class="a" d="M510 122 588 158" marker-end="url(#ah3)"/><path class="a" d="M510 192 588 158" marker-end="url(#ah3)"/><path class="a" d="M510 262 588 158" marker-end="url(#ah3)"/>
+          <text class="s" x="550" y="16">fan-in</text>
+          <path class="a" d="M720 158H758" marker-end="url(#ah3)"/>
+          <rect class="n" x="765" y="246" width="130" height="52" rx="10"/><text class="t" x="830" y="268">Client</text><text class="s" x="830" y="285">streamed over SSE</text>
+          <path class="a" d="M825 184V244" marker-end="url(#ah3)"/>
+          <rect class="n dash" x="150" y="236" width="170" height="64" rx="10"/><text class="t" x="235" y="262">Tool synthesis</text><text class="s" x="235" y="279">AST check, sandbox</text>
+          <path class="a d" d="M320 264H358" marker-end="url(#ah3)"/>
+          <rect class="n dash" x="560" y="246" width="170" height="52" rx="10"/><text class="t" x="645" y="268">Ragas</text><text class="s" x="645" y="285">faithfulness 9.2/10</text>
+          <path class="a d" d="M655 184V244" marker-end="url(#ah3)"/>
+        </svg>
+        <figcaption>The planner starts as many researchers as the question needs. Reducers merge their findings, the writer produces the report, and the answer streams to the client.</figcaption>
+      </figure>
+          <div class="beats">
+            <div class="beat"><h4>Outcome</h4><p>60% lower latency than the sequential version, and a 9.2/10 faithfulness score from Ragas.</p></div>
+            <div class="beat"><h4>Built with</h4><div class="chips"><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">ReAct</span><span class="chip">SSE</span><span class="chip">Ragas</span></div></div>
+          </div>
+          <p class="took"><small>What I took from it</small>Score every run. When quality is measured each time, it is tracked rather than assumed.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- SQL ASSISTANT -->
+    <article class="case k4" id="sql">
+      <div class="case-top">
+        <div class="case-copy">
+          <span class="tag">Enterprise tool · natural-language data access</span>
+          <h3>Plain-English database queries with role-based access</h3>
+          <p class="lead">Operations staff at a shipping port ask questions in plain English and get answers from live databases, without waiting for an engineer to write a query.</p>
+          <div class="metrics">
+            <div class="metric"><b>100+</b><span>non-technical users</span></div>
+            <div class="metric"><b>100%</b><span>adoption</span></div>
+          </div>
+        </div>
+        <figure class="case-shot" style="margin:0">
+          <img src="assets/sql.webp" alt="Illustration of the plain-English data assistant with role-based access and a results table" width="1600" height="900" loading="lazy">
+          <figcaption>Illustration of the data assistant with fictional sample data, not a live screenshot.</figcaption>
+        </figure>
+      </div>
+      <details class="story">
+        <summary><span><span class="closed">Read the full story</span><span class="opened">Hide the story</span></span><svg class="i"><use href="#i-chev"/></svg></summary>
+        <div class="story-body">
+          <div class="beats">
+            <div class="beat"><h4>Problem</h4><p>Non-technical port operations staff needed answers from live databases, and had to wait for an engineer to write each query.</p></div>
+            <div class="beat"><h4>Constraints</h4>
+              <ul class="list">
+                <li>People ask in plain English, not SQL.</li>
+                <li>Answers must come from live data.</li>
+                <li>Each person may only see what their role allows.</li>
+              </ul>
+            </div>
+            <div class="beat wide"><h4>What I did</h4>
+              <ul class="list">
+                <li>Designed a query-routing service that turns a question into a query against live data.</li>
+                <li>Added role-based access so each role only reaches the data it is allowed to see.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="beats">
+            <div class="beat"><h4>Outcome</h4><p>The manual query bottleneck is gone. 100+ non-technical staff use it, with full adoption across the enterprise teams.</p></div>
+            <div class="beat"><h4>Built with</h4><div class="chips"><span class="chip">LangChain</span><span class="chip">RBAC</span><span class="chip">SQL</span><span class="chip">Python</span></div></div>
+          </div>
+          <p class="took"><small>What I took from it</small>People adopt a tool when they can ask in their own words and trust that the access rules are built in.</p>
+        </div>
+      </details>
+    </article>
+  </div>
+</section>
+
+<section id="process" style="background:#ffe9b8;border-block:2px solid var(--ink)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How I work</p>
+      <h2>Listen, build, prove.</h2>
+      <p>The same three steps show up in every project above.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Listen</h3><p>Find the real job and the limits before choosing any model.</p>
+        <ul><li>Who asks, and what are they allowed to do?</li><li>What must never happen?</li><li>Which text can be trusted, and which cannot?</li></ul></div>
+      <div class="step"><div class="num">2</div><h3>Build</h3><p>Let the model reason, and let code hold the rules.</p>
+        <ul><li>Agents with small, typed tools</li><li>State machines for flow, confirmation for actions</li><li>Retrieval tuned to the data</li></ul></div>
+      <div class="step"><div class="num">3</div><h3>Prove</h3><p>Measure quality so it is tracked rather than assumed.</p>
+        <ul><li>Ragas scoring on every run</li><li>300+ tests on the paths that matter</li><li>Latency checked against the old way</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What I care about</p>
+      <h2>Habits that show up in the code.</h2>
+    </div>
+    <div class="vals">
+      <div class="val"><svg class="i"><use href="#i-shield"/></svg><h3>Rules live in code</h3><p>Confirmation gates and access rules sit in the program, where a clever prompt cannot undo them.</p></div>
+      <div class="val"><svg class="i"><use href="#i-check"/></svg><h3>Measure, don't assume</h3><p>Evaluation and tests run on every change, so I know a system works instead of hoping.</p></div>
+      <div class="val"><svg class="i"><use href="#i-wave"/></svg><h3>Plain language first</h3><p>Operations staff ask in English and Ayra answers out loud. The tool adapts to people.</p></div>
+      <div class="val"><svg class="i"><use href="#i-layers"/></svg><h3>Small, clear tools</h3><p>Every tool is marked read or write and returns a short result with a clear error.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" style="background:var(--paper);border-block:2px solid var(--ink)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">AI stack</p>
+      <h2>From classical models to agents and voice.</h2>
+      <p>The full range of AI work I do, from training and fine-tuning models to building agents around them.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-flow"/></svg></div><h3>Agents and orchestration</h3><p>LangGraph state machines, fan-out and fan-in, tool calling, memory, and human confirmation steps.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-db"/></svg></div><h3>Retrieval (RAG)</h3><p>Chunking, embeddings, ChromaDB, FAISS and hybrid retrieval over 31K+ records.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-layers"/></svg></div><h3>Machine learning</h3><p>Building, training and evaluating models, and applying them inside production pipelines.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-cpu"/></svg></div><h3>Deep learning</h3><p>PyTorch, CNNs and RNNs. Fine-tuned a Gemma model with PyTorch.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-eye"/></svg></div><h3>Vision and documents</h3><p>Hybrid OCR with AWS Textract and open-source models, layout-preserving extraction and annotation tooling.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-wave"/></svg></div><h3>Voice AI</h3><p>Streaming speech-to-text, Sarvam speech output, barge-in handling and echo suppression.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-shield"/></svg></div><h3>Safety</h3><p>Confirmation gates, prompt-injection defence, role-based access and least-privilege OAuth scopes.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-check"/></svg></div><h3>Evaluation</h3><p>Ragas faithfulness scoring and a 300+ test suite covering orchestration and latency-sensitive paths.</p></div>
+    </div>
+    <div class="skills">
+      <div class="skillrow"><h4>AI and LLM</h4><div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span class="chip">Agentic AI</span><span class="chip">Tool calling</span><span class="chip">Claude API</span><span class="chip">ChromaDB</span><span class="chip">FAISS</span><span class="chip">Ragas</span><span class="chip">PyTorch</span><span class="chip">CNN</span><span class="chip">RNN</span><span class="chip">Gemma fine-tuning</span></div></div>
+      <div class="skillrow"><h4>Languages and backend</h4><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">FastAPI</span><span class="chip">Django REST</span><span class="chip">REST APIs</span><span class="chip">Async programming</span></div></div>
+      <div class="skillrow"><h4>Systems</h4><div class="chips"><span class="chip">System design</span><span class="chip">Microservices</span><span class="chip">Distributed systems</span><span class="chip">Caching</span><span class="chip">Data structures and algorithms</span></div></div>
+      <div class="skillrow"><h4>Cloud, data, real time</h4><div class="chips"><span class="chip">AWS (EC2, S3, Textract)</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">WebSockets</span><span class="chip">SSE</span></div></div>
+      <div class="skillrow"><h4>Integrations and security</h4><div class="chips"><span class="chip">Google APIs</span><span class="chip">OAuth 2.0</span><span class="chip">Razorpay</span><span class="chip">Deepgram</span><span class="chip">Sarvam AI</span><span class="chip">RBAC</span><span class="chip">JWT</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Experience</p>
+      <h2>Two years of AI in production.</h2>
+    </div>
+    <div class="job">
+      <div class="when">Jan 2025 to present</div>
+      <div>
+        <h3>AI Engineer</h3>
+        <p class="org">Infyz Solutions · Hyderabad</p>
+        <ul class="list">
+          <li>Designed a query-routing service with role-based access that lets 100+ non-technical port operations staff query live databases in plain English, with 100% adoption.</li>
+          <li>Built a document processing pipeline that handles 100 to 150 documents a day and cut manual processing work by 60%.</li>
+          <li>Built a parallel task-orchestration system with fan-out and fan-in, map-reduce merging and SSE streaming, giving 60% lower latency than the sequential version.</li>
+          <li>Built and deployed a real-time management platform for 11 yards and 7,000+ cargo slots, serving 10 to 15 concurrent enterprise users with live tracking, REST APIs and automated inspection workflows.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">Nov 2023 to Dec 2024</div>
+      <div>
+        <h3>Software Engineer, AI</h3>
+        <p class="org">Zessta Software Services · Hyderabad</p>
+        <ul class="list">
+          <li>Designed a hybrid document pipeline combining AWS Textract with open-source models. It fixed layout failures on handwritten, printed and mixed formats that had caused complete extraction loss on multi-column records.</li>
+          <li>Built an annotation tool with a frontend that removed manual dataset labelling and shortened the processing cycle for internal pipelines.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">2020 to 2024</div>
+      <div>
+        <h3>B.Tech, Computer Science</h3>
+        <p class="org">Centurion University · CGPA 8.9/10</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:24px">
+  <div class="wrap">
+    <div class="contact">
+      <p class="eyebrow" style="color:#fff">Contact</p>
+      <h2 style="margin-top:12px">Hiring for an AI engineer? Let's talk.</h2>
+      <p>I'm based in Hyderabad and open to AI engineer roles, hybrid or remote. Email is the fastest way to reach me.</p>
+      <div class="links">
+        <button class="btn primary" type="button" data-copy="saikiran212001@gmail.com"><svg class="i"><use href="#i-mail"/></svg><span>saikiran212001@gmail.com</span></button>
+        <a class="btn" href="https://github.com/saikiran-devai" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg>github.com/saikiran-devai<svg class="i" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="https://www.linkedin.com/in/sai-kiran21/" target="_blank" rel="noopener"><svg class="i"><use href="#i-linkedin"/></svg>linkedin.com/in/sai-kiran21<svg class="i" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener"><svg class="i"><use href="#i-file"/></svg>Resume (PDF)<svg class="i" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+      </div>
+      <p class="phone">Phone: +91 90002 67793</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Sai Kiran Saripilli</span><span>Made in Hyderabad, India</span></div>
+</footer>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var label = btn.querySelector('span');
+    var original = label ? label.textContent : '';
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var done = function (ok) {
+        if (!label) return;
+        label.textContent = ok ? 'Copied' : text;
+        setTimeout(function () { label.textContent = original; }, 1800);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } catch (e) { done(false); }
+    });
+  });
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stage = document.getElementById('stage');
+  if (stage && !reduce && window.matchMedia('(hover:hover)').matches) {
+    var layers = stage.querySelectorAll('.layer');
+    stage.parentElement.addEventListener('pointermove', function (e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - (r.left + r.width / 2)) / r.width;
+      var y = (e.clientY - (r.top + r.height / 2)) / r.height;
+      layers.forEach(function (l) {
+        var d = parseFloat(l.getAttribute('data-depth')) || 0;
+        l.style.transform = 'translate(' + (x * d).toFixed(1) + 'px,' + (y * d).toFixed(1) + 'px)' + (l.classList.contains('pill') ? ' rotate(-14deg)' : '');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
